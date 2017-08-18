@@ -1,3 +1,5 @@
+// See: http://www.acodersjourney.com/2017/08/top-20-cplusplus-multithreading-mistakes/
+
 #include <iostream>
 #include <thread>     // std::thread
 #include <mutex>      // std::mutex, std::lock_guard

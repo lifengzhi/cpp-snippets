@@ -1,3 +1,5 @@
+// See: CodinGame demo interview question
+
 #include <iostream>
 #include <vector>
 #include <algorithm> // std::min_element
