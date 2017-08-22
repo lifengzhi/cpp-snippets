@@ -8,6 +8,7 @@ CXXFLAGS := -std=c++14 -Wall -Wextra -Werror -pedantic
 
 all: multithreading01 \
 	 min_element01 \
+	 raii01 \
 	 type_traits
 
 .PHONY: all clean
@@ -21,6 +22,10 @@ min_element01: min_element01.o
 	$(CXX) -o $(BINDIR)/$@ $^ $(CPPFLAGS) $(CXXFLAGS)
 
 type_traits: type_traits.o
+	@echo "LD $@"
+	$(CXX) -o $(BINDIR)/$@ $^ $(CPPFLAGS) $(CXXFLAGS)
+
+raii01: raii01.o
 	@echo "LD $@"
 	$(CXX) -o $(BINDIR)/$@ $^ $(CPPFLAGS) $(CXXFLAGS)
 
