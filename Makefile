@@ -12,7 +12,7 @@ targets :=\
 	min_element01\
 	raii01\
 	type_traits\
-	reading_from_files
+	read_lines_from_file
 
 define make-target
 $(1): $(1).o
@@ -21,6 +21,7 @@ $(1): $(1).o
 all:: $(1)
 endef
 
+# To debug a foreach loop, replace $(eval ...) with $(info ...)
 $(foreach element,$(targets),$(eval $(call make-target,$(element))))
 
 clean:
