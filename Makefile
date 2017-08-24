@@ -5,32 +5,28 @@ BINDIR := ./bin
 
 CPPFLAGS := -I ./
 CXXFLAGS := -std=c++14 -Wall -Wextra -Werror -pedantic
+LDFLAGS := -lpthread
 
-all: multithreading01 \
-	 min_element01 \
-	 raii01 \
-	 type_traits
+targets :=\
+	multithreading01\
+	min_element01\
+	raii01\
+	type_traits\
+	reading_from_files
 
-.PHONY: all clean
+define make-target
+$(1): $(1).o
+	@echo "LD $(1)"
+	$(CXX) -o $(BINDIR)/$(1) $(1).o $(LDFLAGS)
+all:: $(1)
+endef
 
-multithreading01: multithreading01.o
-	@echo "LD $@"
-	$(CXX) -o $(BINDIR)/$@ $^ $(CPPFLAGS) $(CXXFLAGS) -lpthread
-
-min_element01: min_element01.o
-	@echo "LD $@"
-	$(CXX) -o $(BINDIR)/$@ $^ $(CPPFLAGS) $(CXXFLAGS)
-
-type_traits: type_traits.o
-	@echo "LD $@"
-	$(CXX) -o $(BINDIR)/$@ $^ $(CPPFLAGS) $(CXXFLAGS)
-
-raii01: raii01.o
-	@echo "LD $@"
-	$(CXX) -o $(BINDIR)/$@ $^ $(CPPFLAGS) $(CXXFLAGS)
+$(foreach element,$(targets),$(eval $(call make-target,$(element))))
 
 clean:
 	rm -rf *.o $(BINDIR)/*
+
+.PHONY: all clean
 
 %.o: %.cpp
 	@echo "CXX $<"
