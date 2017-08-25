@@ -3,8 +3,8 @@ create_bin_dir := $(shell mkdir -p ./bin)
 
 BINDIR := ./bin
 
-CPPFLAGS := -I ./
-CXXFLAGS := -std=c++14 -Wall -Wextra -Werror -pedantic
+CPPFLAGS := -I ./ -I ./GSL/include
+CXXFLAGS := -std=c++1z -Wall -Wextra -Werror -pedantic
 LDFLAGS := -lpthread
 
 targets :=\
@@ -12,7 +12,8 @@ targets :=\
 	min_element01\
 	raii01\
 	type_traits\
-	read_lines_from_file
+	read_lines_from_file\
+	span01
 
 define make-target
 $(1): $(1).o
