@@ -17,7 +17,9 @@ targets :=\
 	span02\
 	const_pass_by_value
 
+# Files that do need newer compilers
 #arrays_with_auto
+#check_type_deduction
 
 define make-target
 $(1): $(1).o
