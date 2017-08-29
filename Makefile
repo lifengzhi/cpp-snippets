@@ -13,7 +13,8 @@ targets :=\
 	raii01\
 	type_traits\
 	read_lines_from_file\
-	span01
+	span01\
+	const_pass_by_value
 
 define make-target
 $(1): $(1).o
