@@ -14,7 +14,10 @@ targets :=\
 	type_traits\
 	read_lines_from_file\
 	span01\
+	span02\
 	const_pass_by_value
+
+#arrays_with_auto
 
 define make-target
 $(1): $(1).o
