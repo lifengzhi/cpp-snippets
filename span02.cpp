@@ -30,4 +30,7 @@ int main()
     gsl::span<const int> s1 { arr1 };
     gsl::span<int> s2 { arr2 };
     copy(s1, s2);
+
+    // C++17
+    //copy(gsl::make_span(arr1), gsl::make_span(arr2));
 }
