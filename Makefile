@@ -1,7 +1,6 @@
 # https://stackoverflow.com/a/16346321
-create_bin_dir := $(shell mkdir -p ./bin)
-
 BINDIR := ./bin
+create_bin_dir := $(shell mkdir -p $(BINDIR))
 
 CPPFLAGS := -I ./ -I ./GSL/include
 CXXFLAGS := -std=c++1z -Wall -Wextra -Werror -pedantic
@@ -15,7 +14,8 @@ targets :=\
 	read_lines_from_file\
 	span01\
 	span02\
-	const_pass_by_value
+	const_pass_by_value\
+	tests4geeks_sample_test_question
 
 # Files that do need newer compilers
 #arrays_with_auto
