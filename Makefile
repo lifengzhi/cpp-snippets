@@ -15,7 +15,8 @@ targets :=\
 	span01\
 	span02\
 	const_pass_by_value\
-	tests4geeks_sample_test_question
+	tests4geeks_sample_test_question\
+	array_copy
 
 # Files that do need newer compilers
 #arrays_with_auto
