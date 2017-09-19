@@ -22,7 +22,7 @@ targets :=\
 	array_copy \
 	preincrement
 
-ifeq ($(shell expr `$(CXX) -dumpversion | cut -c 1-1` \> 6), 1)
+ifeq ($(shell ./check_compiler.sh gnu 70000 $(CXX)),0)
 CXXFLAGS += \
     -Wduplicated-cond \
     -Wduplicated-branches \
