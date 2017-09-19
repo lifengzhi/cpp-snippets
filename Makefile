@@ -9,20 +9,6 @@ CPPFLAGS := -I ./ -I ./GSL/include
 CXXFLAGS := -std=c++1z -Wall -Wextra -Werror -pedantic
 LDFLAGS := -lpthread
 
-ifeq ($(shell expr `$(CXX) -dumpversion | cut -c 1-1` \> 6), 1)
-CXXFLAGS += \
-    -Wduplicated-cond \
-    -Wduplicated-branches \
-    -Wlogical-op \
-    -Wrestrict \
-    -Wnull-dereference \
-    -Wold-style-cast \
-    -Wuseless-cast \
-    -Wdouble-promotion \
-    -Wshadow \
-    -Wformat=2
-endif
-
 targets :=\
 	multithreading01\
 	min_element01\
@@ -36,9 +22,23 @@ targets :=\
 	array_copy \
 	preincrement
 
-# Files that do need newer compilers
-#arrays_with_auto
-#check_type_deduction
+ifeq ($(shell expr `$(CXX) -dumpversion | cut -c 1-1` \> 6), 1)
+CXXFLAGS += \
+    -Wduplicated-cond \
+    -Wduplicated-branches \
+    -Wlogical-op \
+    -Wrestrict \
+    -Wnull-dereference \
+    -Wold-style-cast \
+    -Wuseless-cast \
+    -Wdouble-promotion \
+    -Wshadow \
+    -Wformat=2
+
+targets += \
+    arrays_with_auto \
+    check_type_deduction
+endif
 
 define make-target
 $(1): $(OBJDIR)/$(1).o
