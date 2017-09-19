@@ -1,5 +1,7 @@
 #include <array>
 
+#define UNUSED(x) (void)(x)
+
 // C++17 only
 // requires template argument deduction for class templates
 namespace std
@@ -22,4 +24,8 @@ int main()
     // Alternative via std::array (see above), but not quite the same...
     // https://stackoverflow.com/q/6114067
     std::array e{1, 2, 3, 4};
+
+    UNUSED(a);
+    UNUSED(b);
+    UNUSED(e);
 }
