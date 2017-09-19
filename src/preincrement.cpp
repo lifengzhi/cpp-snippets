@@ -9,7 +9,7 @@
 
 class integer {
     public:
-        integer(int t_value) : m_value(t_value) {}
+        explicit integer(int t_value) : m_value(t_value) {}
 
         int get_value() const { return m_value; }
 
