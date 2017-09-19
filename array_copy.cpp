@@ -35,7 +35,7 @@ int main()
 {
     int arr1[] {1,2,3};
     int arr2[sizeof(arr1)/sizeof(arr1[0])];
-    
+
     array_copy(arr2, arr1);
 
     gsl::span<const int> s1 {arr1};
