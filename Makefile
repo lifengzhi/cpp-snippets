@@ -1,6 +1,8 @@
 # https://stackoverflow.com/a/16346321
 BINDIR := ./bin
 create_bin_dir := $(shell mkdir -p $(BINDIR))
+OBJDIR := ./obj
+create_obj_dir := $(shell mkdir -p $(OBJDIR))
 
 CPPFLAGS := -I ./ -I ./GSL/include
 CXXFLAGS := -std=c++1z -Wall -Wextra -Werror -pedantic
@@ -38,9 +40,9 @@ targets :=\
 #check_type_deduction
 
 define make-target
-$(1): $(1).o
+$(1): $(OBJDIR)/$(1).o
 	@echo "LD $(1)"
-	$(CXX) -o $(BINDIR)/$(1) $(1).o $(LDFLAGS)
+	$(CXX) -o $(BINDIR)/$(1) $(OBJDIR)/$(1).o $(LDFLAGS)
 all:: $(1)
 endef
 
@@ -48,11 +50,11 @@ endef
 $(foreach element,$(targets),$(eval $(call make-target,$(element))))
 
 clean:
-	rm -rf *.o $(BINDIR)/*
+	rm -rf $(OBJDIR)/* $(BINDIR)/*
 
 .PHONY: all clean
 
-%.o: %.cpp
+$(OBJDIR)/%.o: %.cpp
 	@echo "CXX $<"
 	$(CXX) -c -o $@ $< $(CPPFLAGS) $(CXXFLAGS)
 
