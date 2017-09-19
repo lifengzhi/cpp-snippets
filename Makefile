@@ -3,6 +3,7 @@ BINDIR := ./bin
 create_bin_dir := $(shell mkdir -p $(BINDIR))
 OBJDIR := ./obj
 create_obj_dir := $(shell mkdir -p $(OBJDIR))
+SRCDIR := ./src
 
 CPPFLAGS := -I ./ -I ./GSL/include
 CXXFLAGS := -std=c++1z -Wall -Wextra -Werror -pedantic
@@ -54,7 +55,7 @@ clean:
 
 .PHONY: all clean
 
-$(OBJDIR)/%.o: %.cpp
+$(OBJDIR)/%.o: $(SRCDIR)/%.cpp
 	@echo "CXX $<"
 	$(CXX) -c -o $@ $< $(CPPFLAGS) $(CXXFLAGS)
 
