@@ -10,4 +10,6 @@ addons:
       - g++-7
 
 script:
+  - /usr/bin/g++-7 -dumpfullversion
   - make clean all V=1 CXX=/usr/bin/g++-7 CC=/usr/bin/gcc-7
+  - for i in bin/*; do ${i}; done
