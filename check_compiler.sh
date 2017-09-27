@@ -58,7 +58,7 @@ fi
 
 long_version=$(echo "${version}" | sed -e 's/\.\([0-9]\)\b/0\1/g' -e 's/\.//g')
 
-if [ ${long_version} -ge ${wanted_version} ];
+if [ "${long_version}" -ge "${wanted_version}" ];
 then
     echo 0
     exit 0
