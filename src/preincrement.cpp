@@ -36,7 +36,7 @@ class integer {
         int m_value;
 };
 
-std::ostream& operator<<(std::ostream& os, const integer& i)  
+std::ostream& operator<<(std::ostream& os, const integer& i)
 {
     os << i.m_value;
     return os;
