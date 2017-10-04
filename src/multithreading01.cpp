@@ -1,6 +1,7 @@
 // See: http://www.acodersjourney.com/2017/08/top-20-cplusplus-multithreading-mistakes/
 
 #include <iostream>
+#include <string>
 #include <thread>     // std::thread
 #include <mutex>      // std::mutex, std::lock_guard
 #include <functional> // std::ref
@@ -34,4 +35,3 @@ int main()
 
     return 0;
 }
-
