@@ -69,6 +69,7 @@ clean:
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.cpp
 	@echo "CXX $<"
+	cppcheck --enable=all --suppress=missingIncludeSystem $<
 	$(CXX) -c -o $@ $< $(CPPFLAGS) $(CXXFLAGS)
 
 # http://make.mad-scientist.net/managing-recipe-echoing/
