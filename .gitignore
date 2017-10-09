@@ -2,6 +2,9 @@ bin/
 *.o
 *.txt
 
+# Klocwork analysis files
+.klocwork/
+
 # Created by https://www.gitignore.io/api/vim
 
 ### Vim ###
