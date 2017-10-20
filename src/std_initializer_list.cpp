@@ -1,3 +1,5 @@
+// See: https://stackoverflow.com/q/25612262/496459
+
 #include <iostream>
 #include <type_traits>
 
@@ -14,8 +16,8 @@ int main()
     auto i{ 1 };
     std::cout << std::boolalpha;
 #if __cplusplus > 201402L
-    std::cout << "After C++17: " << typeid(i).name() << ' ' << std::is_same_v<decltype(i), int> << '\n';
+    std::cout << "After C++17: " << typeid(i).name() << " is int: " << std::is_same_v<decltype(i), int> << '\n';
 #else
-    std::cout << "Before C++17: " << typeid(i).name() << ' ' << std::is_same<decltype(i), std::initializer_list<int>>::value << '\n';
+    std::cout << "Before C++17: " << typeid(i).name() << " is int: " << std::is_same<decltype(i), int>::value << '\n';
 #endif
 }
