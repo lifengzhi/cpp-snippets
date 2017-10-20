@@ -20,7 +20,8 @@ targets :=\
 	const_pass_by_value\
 	tests4geeks_sample_test_question\
 	array_copy \
-	preincrement
+	preincrement \
+	exception01
 
 ifeq ($(shell ./check_compiler.sh gnu 70000 $(CXX)),0)
 CXXFLAGS += \
