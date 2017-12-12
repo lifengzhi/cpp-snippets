@@ -21,7 +21,8 @@ targets :=\
 	tests4geeks_sample_test_question\
 	array_copy \
 	preincrement \
-	exception01
+	exception01 \
+	std_endl
 
 ifeq ($(shell ./check_compiler.sh gnu 70000 $(CXX)),0)
 CXXFLAGS += \
