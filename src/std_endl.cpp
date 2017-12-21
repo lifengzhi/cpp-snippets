@@ -4,13 +4,10 @@
 #include <iostream>
 
 namespace std {
-    std::ostream& nl(std::ostream& out) {
-        return out << '\n';
-    }
-}
+std::ostream &nl(std::ostream &out) { return out << '\n'; }
+}  // namespace std
 
-int main()
-{
-    std::cout << "Hello world!" << std::nl << std::flush;
-    std::cout << "Hello world!" << std::endl;
+int main() {
+  std::cout << "Hello world!" << std::nl << std::flush;
+  std::cout << "Hello world!" << std::endl;
 }

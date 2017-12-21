@@ -1,4 +1,5 @@
-// See: https://www.heise.de/developer/artikel/C-Core-Guidelines-The-Guideline-Support-Library-3780760.html
+// See:
+// https://www.heise.de/developer/artikel/C-Core-Guidelines-The-Guideline-Support-Library-3780760.html
 
 // In compiler explorer, use: -I/opt/compiler-explorer/libs/gsl-lite/include -O2
 
@@ -7,30 +8,27 @@
 #define UNUSED(x) (void)(x)
 
 template <typename T>
-void copy_n(const T* src, T* des, int len)
-{
-    UNUSED(src);
-    UNUSED(des);
-    UNUSED(len);
+void copy_n(const T *src, T *des, int len) {
+  UNUSED(src);
+  UNUSED(des);
+  UNUSED(len);
 }
 
 template <typename T>
-void copy(gsl::span<const T> src, gsl::span<T> des)
-{
-    UNUSED(src);
-    UNUSED(des);
+void copy(gsl::span<const T> src, gsl::span<T> des) {
+  UNUSED(src);
+  UNUSED(des);
 }
 
-int main()
-{
-    const int arr1[] {1, 2, 3};
-    int arr2[] {3, 4, 5};
-    copy_n(arr1, arr2, 3);
+int main() {
+  const int arr1[]{1, 2, 3};
+  int arr2[]{3, 4, 5};
+  copy_n(arr1, arr2, 3);
 
-    gsl::span<const int> s1 { arr1 };
-    gsl::span<int> s2 { arr2 };
-    copy(s1, s2);
+  gsl::span<const int> s1{arr1};
+  gsl::span<int> s2{arr2};
+  copy(s1, s2);
 
-    // C++17
-    //copy(gsl::make_span(arr1), gsl::make_span(arr2));
+  // C++17
+  // copy(gsl::make_span(arr1), gsl::make_span(arr2));
 }

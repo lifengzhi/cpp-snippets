@@ -9,15 +9,16 @@ C++11 	__cplusplus = 201103L 	ISO/IEC 14882:2011
 C++14 	__cplusplus = 201402L 	ISO/IEC 14882:2014
 */
 
-int main()
-{
-    // C++17: int
-    // C++11/14: std::initializer_list<int>
-    auto i{ 1 };
-    std::cout << std::boolalpha;
+int main() {
+  // C++17: int
+  // C++11/14: std::initializer_list<int>
+  auto i{1};
+  std::cout << std::boolalpha;
 #if __cplusplus > 201402L
-    std::cout << "After C++17: " << typeid(i).name() << " is int: " << std::is_same_v<decltype(i), int> << '\n';
+  std::cout << "After C++17: " << typeid(i).name()
+            << " is int: " << std::is_same_v<decltype(i), int> << '\n';
 #else
-    std::cout << "Before C++17: " << typeid(i).name() << " is int: " << std::is_same<decltype(i), int>::value << '\n';
+  std::cout << "Before C++17: " << typeid(i).name()
+            << " is int: " << std::is_same<decltype(i), int>::value << '\n';
 #endif
 }
