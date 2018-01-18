@@ -23,7 +23,8 @@ targets :=\
 	preincrement \
 	exception01 \
 	std_endl \
-	enum_as_index
+	enum_as_index \
+	tee
 
 ifeq ($(shell ./check_compiler.sh gnu 70000 $(CXX)),0)
 CXXFLAGS += \
