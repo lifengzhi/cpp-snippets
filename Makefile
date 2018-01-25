@@ -25,7 +25,8 @@ targets :=\
 	std_endl \
 	enum_as_index \
 	tee \
-	character_literals
+	character_literals \
+	exception02
 
 ifeq ($(shell ./check_compiler.sh gnu 70000 $(CXX)),0)
 CXXFLAGS += \
