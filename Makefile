@@ -26,7 +26,8 @@ targets :=\
 	enum_as_index \
 	tee \
 	character_literals \
-	exception02
+	exception02 \
+	crtp_vs_mixin
 
 ifeq ($(shell ./check_compiler.sh gnu 70000 $(CXX)),0)
 CXXFLAGS += \
