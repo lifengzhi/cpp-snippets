@@ -27,7 +27,8 @@ targets :=\
 	tee \
 	character_literals \
 	exception02 \
-	crtp_vs_mixin
+	crtp_vs_mixin \
+	singleton
 
 ifeq ($(shell ./check_compiler.sh gnu 70000 $(CXX)),0)
 CXXFLAGS += \
