@@ -8,14 +8,14 @@ class CSingleton final {
   static CSingleton& GetInstance();
   int getValue() const { return mValue; }
 
- private:
-  CSingleton() = default;
-  ~CSingleton() = default;
-
   CSingleton(const CSingleton&) = delete;
   CSingleton& operator=(const CSingleton&) = delete;
   CSingleton(CSingleton&&) = delete;
   CSingleton& operator=(CSingleton&&) = delete;
+
+ private:
+  CSingleton() = default;
+  ~CSingleton() = default;
 
   int mValue = 0;
 };
