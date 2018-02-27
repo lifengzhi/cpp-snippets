@@ -26,6 +26,6 @@ CSingleton& CSingleton::GetInstance() {
 }
 
 int main() {
-  auto const value = CSingleton::GetInstance().getValue();
+  auto const value{CSingleton::GetInstance().getValue()};
   std::cout << value << '\n';
 }
