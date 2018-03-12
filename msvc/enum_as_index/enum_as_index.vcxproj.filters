@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\src\std_endl.cpp">
+    <ClCompile Include="..\..\src\enum_as_index.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
