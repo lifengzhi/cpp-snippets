@@ -30,7 +30,8 @@ targets :=\
 	crtp_vs_mixin \
 	singleton \
 	factory \
-	special_member_functions
+	special_member_functions \
+	kth_largest
 
 ifeq ($(shell ./check_compiler.sh gnu 70000 $(CXX)),0)
 CXXFLAGS += \
