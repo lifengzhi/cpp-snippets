@@ -11,16 +11,18 @@ write a function that returns the kth largest element of the list.
 #include <optional>
 #include <vector>
 
-std::optional<int> kth_largest(std::vector<int> vec,
-                               std::vector<int>::size_type k) {
+template <typename T>
+std::optional<T> kth_largest(std::vector<T> vec,
+                             typename std::vector<T>::size_type k) {
   if ((vec.size() == 0) || (k > vec.size() - 1)) return std::nullopt;
-  std::sort(std::begin(vec), std::end(vec), std::greater<int>());
+  std::sort(std::begin(vec), std::end(vec), std::greater<T>());
   return vec[k];
 }
 
-void check_kth_largest(std::vector<int> const& vec,
-                       std::vector<int>::size_type k) {
-  if (auto res = kth_largest(vec, k)) {
+template <typename T>
+void check_kth_largest(std::vector<T> const& vec,
+                       typename std::vector<T>::size_type k) {
+  if (auto res = kth_largest<T>(vec, k)) {
     std::cout << *res << '\n';
   } else {
     std::cout << "No kth element\n";
@@ -33,4 +35,6 @@ int main() {
 
   check_kth_largest(vec, 3);
   check_kth_largest(vec, 10);
+
+  return 0;
 }
