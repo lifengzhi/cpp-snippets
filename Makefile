@@ -29,7 +29,8 @@ targets :=\
 	exception02 \
 	crtp_vs_mixin \
 	singleton \
-	factory
+	factory \
+	special_member_functions
 
 ifeq ($(shell ./check_compiler.sh gnu 70000 $(CXX)),0)
 CXXFLAGS += \
