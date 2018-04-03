@@ -14,7 +14,7 @@ write a function that returns the kth largest element of the list.
 template <typename T>
 std::optional<T> kth_largest(std::vector<T> vec,
                              typename std::vector<T>::size_type k) {
-  if ((vec.size() == 0) || (k > vec.size() - 1)) return std::nullopt;
+  if ((std::size(vec) == 0) || (k > std::size(vec) - 1)) return std::nullopt;
   std::sort(std::begin(vec), std::end(vec), std::greater<T>());
   return vec[k];
 }
