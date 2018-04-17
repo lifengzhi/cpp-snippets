@@ -35,6 +35,7 @@ int main() {
 
   check_kth_largest(vec, 3);
   check_kth_largest(vec, 10);
+  check_kth_largest(vec, -1);
 
   return 0;
 }
