@@ -5,24 +5,28 @@ write a function that returns the kth largest element of the list.
 */
 
 #include <algorithm>
+#include <array>
 #include <functional>
 #include <iostream>
 #include <numeric>
 #include <optional>
 #include <vector>
 
-template <typename T>
-std::optional<T> kth_largest(std::vector<T> vec,
-                             typename std::vector<T>::size_type k) {
-  if ((std::size(vec) == 0) || (k > std::size(vec) - 1)) return std::nullopt;
-  std::sort(std::begin(vec), std::end(vec), std::greater<T>());
-  return vec[k];
+template <typename Container, typename T = typename std::remove_cv_t<
+                                  std::remove_reference_t<Container>>>
+std::optional<typename T::value_type> kth_largest(T container,
+                                                  typename T::size_type k) {
+  if ((std::size(container) == 0) || (k > std::size(container) - 1))
+    return std::nullopt;
+  std::sort(std::begin(container), std::end(container),
+            std::greater<typename T::value_type>());
+  return container[k];
 }
 
-template <typename T>
-void check_kth_largest(std::vector<T> const& vec,
-                       typename std::vector<T>::size_type k) {
-  if (auto res = kth_largest<T>(vec, k)) {
+template <typename Container>
+void check_kth_largest(Container const& container,
+                       typename Container::size_type k) {
+  if (auto res = kth_largest<Container>(container, k)) {
     std::cout << *res << '\n';
   } else {
     std::cout << "No kth element\n";
@@ -36,6 +40,13 @@ int main() {
   check_kth_largest(vec, 3);
   check_kth_largest(vec, 10);
   check_kth_largest(vec, -1);
+
+  std::array<int, 10> arr;
+  std::iota(std::begin(arr), std::end(arr), 0);
+
+  check_kth_largest(arr, 3);
+  check_kth_largest(arr, 10);
+  check_kth_largest(arr, -1);
 
   return 0;
 }
