@@ -17,8 +17,8 @@ auto slide(I first, I last, I position) -> std::pair<I, I> {
   return {first, last};
 }
 
-  // I models BidirectionalIterator
-  // S models UnaryPredicate
+// I models BidirectionalIterator
+// S models UnaryPredicate
 
 #if __cplusplus == 201703L
 // C++17 negator: std::not_fn needs a callable object
@@ -36,7 +36,7 @@ auto gather(I first, I last, I position, P predicate) -> std::pair<I, I> {
 }
 
 struct is_odd : std::unary_function<int, bool> {
-	bool operator()(int i) const { return i % 2 ? true : false; }
+  bool operator()(int i) const { return i % 2 ? true : false; }
 };
 
 #endif
@@ -61,8 +61,8 @@ int main() {
   }
 
 #if __cplusplus == 201703L
-  auto gathered17 = gather17(std::begin(vec), std::end(vec), std::end(vec),
-                             [](int i) { return i % 2 ? true : false; });
+  auto gathered17 = gather(std::begin(vec), std::end(vec), std::end(vec),
+                           [](int i) { return i % 2 ? true : false; });
 
   for (auto i = gathered17.first; i != gathered17.second; ++i) {
     std::cout << "gathered: " << *i << '\n';

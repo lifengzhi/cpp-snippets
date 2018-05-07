@@ -31,7 +31,8 @@ targets :=\
 	singleton \
 	factory \
 	special_member_functions \
-	kth_largest
+	kth_largest \
+	no_raw_loops
 
 ifeq ($(shell ./check_compiler.sh gnu 70000 $(CXX)),0)
 CXXFLAGS += \
