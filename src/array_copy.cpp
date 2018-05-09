@@ -10,7 +10,7 @@
 #include <gsl/gsl>
 
 template <typename T, size_t N>
-inline void array_copy(T (&dst)[N], T (&src)[N]) {
+inline void array_copy(T (&dst)[N], T (&src)[N]) noexcept {
   static_assert(std::is_trivially_copy_assignable_v<T>);
 #if 1
   memcpy(dst, src, N * sizeof(T));
@@ -33,8 +33,8 @@ int main() {
 
   array_copy(arr2, arr1);
 
-  gsl::span<const int> s1{arr1};
-  gsl::span<const int> s2{arr2};
+  gsl::span<const int> const s1{arr1};
+  gsl::span<const int> const s2{arr2};
   print_collection(s1);
   print_collection(s2);
 }

@@ -13,7 +13,7 @@ int main() {
   // great for catching a derived exception, see exception hierarchy
 
   try {
-    int j = v.at(99);
+    int const j = v.at(99);
     UNUSED(j);
   } catch (std::out_of_range &e) {
     // first block that catches the exception is called

@@ -8,14 +8,14 @@
 #define UNUSED(x) (void)(x)
 
 template <typename T>
-void copy_n(const T *src, T *des, int len) {
+void copy_n(const T *src, T *des, int len) noexcept {
   UNUSED(src);
   UNUSED(des);
   UNUSED(len);
 }
 
 template <typename T>
-void copy(gsl::span<const T> src, gsl::span<T> des) {
+void copy(gsl::span<const T> src, gsl::span<T> des) noexcept {
   UNUSED(src);
   UNUSED(des);
 }
@@ -25,8 +25,8 @@ int main() {
   int arr2[]{3, 4, 5};
   copy_n(arr1, arr2, 3);
 
-  gsl::span<const int> s1{arr1};
-  gsl::span<int> s2{arr2};
+  gsl::span<const int> const s1{arr1};
+  gsl::span<int> const s2{arr2};
   copy(s1, s2);
 
   // C++17

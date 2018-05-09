@@ -10,18 +10,18 @@
 
 class integer {
  public:
-  explicit integer(int t_value) : m_value(t_value) {}
+  explicit integer(int t_value) noexcept : m_value(t_value) {}
 
-  int get_value() const { return m_value; }
+  int get_value() const noexcept { return m_value; }
 
   // pre increment operator
-  integer &operator++() {
+  integer &operator++ () noexcept {
     ++m_value;
     return *this;
   }
 
   // post increment operator
-  integer operator++(int) {
+  integer operator++(int) noexcept {
     // a copy is made, it's cheap, but it's still a copy
     integer old = *this;
     ++m_value;

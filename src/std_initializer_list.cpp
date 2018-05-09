@@ -12,7 +12,7 @@ C++14 	__cplusplus = 201402L 	ISO/IEC 14882:2014
 int main() {
   // C++17: int
   // C++11/14: std::initializer_list<int>
-  auto i{1};
+  auto const i{1};
   std::cout << std::boolalpha;
 #if __cplusplus > 201402L
   std::cout << "After C++17: " << typeid(i).name()

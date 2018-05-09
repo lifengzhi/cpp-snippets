@@ -11,7 +11,7 @@ class A {
   }
 
  private:
-  A(){};
+  A() noexcept {};
 };
 
 int main() {

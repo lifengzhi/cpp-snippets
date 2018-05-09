@@ -36,7 +36,7 @@ auto gather(I first, I last, I position, P predicate) -> std::pair<I, I> {
 }
 
 struct is_odd : std::unary_function<int, bool> {
-  bool operator()(int i) const { return i % 2 ? true : false; }
+  bool operator()(int i) const { return (i % 2) ? true : false; }
 };
 
 #endif
@@ -62,7 +62,7 @@ int main() {
 
 #if __cplusplus == 201703L
   auto gathered17 = gather(std::begin(vec), std::end(vec), std::end(vec),
-                           [](int i) { return i % 2 ? true : false; });
+                           [](int i) { return (i % 2) ? true : false; });
 
   for (auto i = gathered17.first; i != gathered17.second; ++i) {
     std::cout << "gathered: " << *i << '\n';
