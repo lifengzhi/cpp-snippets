@@ -32,7 +32,8 @@ targets :=\
 	factory \
 	special_member_functions \
 	kth_largest \
-	no_raw_loops
+	no_raw_loops \
+	find_duplicate_vectors
 
 ifeq ($(shell ./check_compiler.sh gnu 70000 $(CXX)),0)
 CXXFLAGS += \
