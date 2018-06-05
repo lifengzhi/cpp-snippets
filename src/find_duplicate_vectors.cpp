@@ -1,4 +1,5 @@
 // http://thispointer.com/c-how-to-find-duplicates-in-a-vector/
+// https://stackoverflow.com/q/32590764/496459
 
 #include <algorithm>
 #include <functional>
@@ -10,7 +11,7 @@
 // Print the contents of vector
 template <typename T>
 void print(T& vecOfElements, std::string delimeter = " , ") {
-  for (auto elem : vecOfElements) std::cout << elem << delimeter;
+  for (auto const& elem : vecOfElements) std::cout << elem << delimeter;
   std::cout << std::endl;
 }
 
@@ -28,7 +29,7 @@ void findDuplicates(std::vector<T>& vecOfElements, std::map<T, int>& countMap) {
   }
 
   // Remove the elements from Map which has 1 frequency count
-  for (auto it = countMap.begin(); it != countMap.end();) {
+  for (auto it = std::begin(countMap); it != std::end(countMap);) {
     if (it->second == 1)
       it = countMap.erase(it);
     else
@@ -44,25 +45,6 @@ int main() {
 
   print(vecOfStings);
 
-  // Create a map to store the frequency of each element in vector
-  std::map<std::string, int> countMap;
-
-  // Iterate over the vector and store the frequency of each element in map
-  for (auto& elem : vecOfStings) {
-    auto result = countMap.insert(std::pair<std::string, int>(elem, 1));
-    if (result.second == false) result.first->second++;
-  }
-
-  std::cout << "Duplicate elements and their duplication count " << std::endl;
-
-  // Iterate over the map
-  for (auto& elem : countMap) {
-    // If frequency count is greater than 1 then its a duplicate element
-    if (elem.second > 1) {
-      std::cout << elem.first << " :: " << elem.second << std::endl;
-    }
-  }
-
   /*
    * Finding duplicates in vector using generic function
    */
@@ -73,7 +55,7 @@ int main() {
   findDuplicates(vecOfStings, duplicateElements);
 
   std::cout << "Duplicate elements and their duplication count " << std::endl;
-  for (auto& elem : duplicateElements)
+  for (auto const& elem : duplicateElements)
     std::cout << elem.first << " :: " << elem.second << std::endl;
 
   return 0;
