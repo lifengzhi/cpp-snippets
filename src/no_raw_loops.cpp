@@ -77,7 +77,7 @@ int main() {
 
   auto gathered11 = gather(
       std::begin(vec), std::end(vec), std::end(vec),
-      std::function<bool(int)>([](int i) { return i % 2 ? true : false; }));
+      std::function<bool(int)>([](int i) { return (i % 2) ? true : false; }));
 
   for (auto i = gathered11.first; i != gathered11.second; ++i) {
     std::cout << "gathered: " << *i << '\n';
