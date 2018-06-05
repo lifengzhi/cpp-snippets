@@ -6,7 +6,7 @@
 
 // https://en.wikipedia.org/wiki/Special_member_functions#Signatures
 struct S {
-  S(int) { puts("S(int)"); }
+  explicit S(int) { puts("S(int)"); }
 
   // Default constructor
   S() { puts("S()"); }
