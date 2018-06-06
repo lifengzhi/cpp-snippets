@@ -8,55 +8,46 @@
 #include <string>
 #include <vector>
 
-// Print the contents of vector
 template <typename T>
 void print(T& vecOfElements, std::string delimeter = " , ") {
   for (auto const& elem : vecOfElements) std::cout << elem << delimeter;
   std::cout << std::endl;
 }
 
-/*
- * Generic function to find duplicates elements in vector.
- * It adds the duplicate elements and their duplication count in given map
- * countMap
- */
 template <typename T>
-void findDuplicates(std::vector<T>& vecOfElements, std::map<T, int>& countMap) {
-  // Iterate over the vector and store the frequency of each element in map
+std::map<T, int> findDuplicates(std::vector<T>& vecOfElements) {
+  std::map<T, int> countMap;
+
   for (auto& elem : vecOfElements) {
-    auto result = countMap.insert(std::pair<std::string, int>(elem, 1));
-    if (result.second == false) result.first->second++;
+    countMap[elem]++;
   }
 
-  // Remove the elements from Map which has 1 frequency count
+  // https://stackoverflow.com/a/8234813/496459
+  // See also: Effective STL Item 9 Choose carefully among erasing options
+
   for (auto it = std::begin(countMap); it != std::end(countMap);) {
     if (it->second == 1)
       it = countMap.erase(it);
     else
-      it++;
+      ++it;
   }
+
+  return countMap;
 }
 
 int main() {
-  // Vector of strings
-  std::vector<std::string> vecOfStings{"at",  "hello", "hi",   "there", "where",
+  std::vector<std::string> words{"at",  "hello", "hi",   "there", "where",
                                        "now", "is",    "that", "hi",    "where",
                                        "at",  "no",    "yes",  "at"};
 
-  print(vecOfStings);
+  print(words);
 
-  /*
-   * Finding duplicates in vector using generic function
-   */
+  auto const duplicateElements = findDuplicates(words);
 
-  std::map<std::string, int> duplicateElements;
-
-  // Get the duplicate elements in vector
-  findDuplicates(vecOfStings, duplicateElements);
-
-  std::cout << "Duplicate elements and their duplication count " << std::endl;
-  for (auto const& elem : duplicateElements)
+  std::cout << "Duplicate elements and their duplication count:" << std::endl;
+  for (auto const& elem : duplicateElements) {
     std::cout << elem.first << " :: " << elem.second << std::endl;
+  }
 
   return 0;
 }
