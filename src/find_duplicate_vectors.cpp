@@ -18,7 +18,7 @@ template <typename T>
 std::map<T, int> findDuplicates(std::vector<T>& vecOfElements) {
   std::map<T, int> countMap;
 
-  for (auto& elem : vecOfElements) {
+  for (auto const& elem : vecOfElements) {
     countMap[elem]++;
   }
 
@@ -37,8 +37,8 @@ std::map<T, int> findDuplicates(std::vector<T>& vecOfElements) {
 
 int main() {
   std::vector<std::string> words{"at",  "hello", "hi",   "there", "where",
-                                       "now", "is",    "that", "hi",    "where",
-                                       "at",  "no",    "yes",  "at"};
+                                 "now", "is",    "that", "hi",    "where",
+                                 "at",  "no",    "yes",  "at"};
 
   print(words);
 
