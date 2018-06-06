@@ -15,7 +15,7 @@ void print(T& vecOfElements, std::string delimeter = " , ") {
 }
 
 template <typename T>
-std::map<T, int> findDuplicates(std::vector<T>& vecOfElements) {
+auto findDuplicates(std::vector<T>& vecOfElements) {
   std::map<T, int> countMap;
 
   for (auto const& elem : vecOfElements) {
