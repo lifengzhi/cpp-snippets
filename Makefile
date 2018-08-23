@@ -34,7 +34,8 @@ targets :=\
 	kth_largest \
 	no_raw_loops \
 	find_duplicate_vectors \
-	std_function
+	std_function \
+	mod_and_remainder
 
 ifeq ($(shell ./check_compiler.sh gnu 70000 $(CXX)),0)
 CXXFLAGS += \
