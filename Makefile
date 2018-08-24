@@ -7,7 +7,8 @@ SRCDIR := ./src
 
 CPPFLAGS := -I ./ -I ./GSL/include
 CXXFLAGS := -std=c++17 -Wall -Wextra -Werror -Wshadow -pedantic
-LDFLAGS := -lpthread
+# for using std::filesystem you need to link with libstdc++fs
+LDFLAGS := -lpthread -lstdc++fs
 
 targets :=\
 	multithreading01\
@@ -37,7 +38,8 @@ targets :=\
 	std_function \
 	mod_and_remainder \
 	pramp01 \
-	unique_ptr02
+	unique_ptr02 \
+	fs01
 
 ifeq ($(shell ./check_compiler.sh gnu 70000 $(CXX)),0)
 CXXFLAGS += \
