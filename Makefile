@@ -36,7 +36,8 @@ targets :=\
 	find_duplicate_vectors \
 	std_function \
 	mod_and_remainder \
-	pramp01
+	pramp01 \
+	unique_ptr02
 
 ifeq ($(shell ./check_compiler.sh gnu 70000 $(CXX)),0)
 CXXFLAGS += \
