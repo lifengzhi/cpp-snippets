@@ -6,7 +6,7 @@ create_obj_dir := $(shell mkdir -p $(OBJDIR))
 SRCDIR := ./src
 
 CPPFLAGS := -I ./ -I ./GSL/include
-CXXFLAGS := -std=c++17 -Wall -Wextra -Werror -Wshadow -pedantic
+CXXFLAGS := -std=c++17 -Wall -Wextra -Wshadow -Wdeprecated -Werror -pedantic
 # for using std::filesystem you need to link with libstdc++fs
 LDFLAGS := -lpthread -lstdc++fs
 
