@@ -40,7 +40,8 @@ targets :=\
 	pramp01 \
 	unique_ptr02 \
 	fs01 \
-	io_benchmark
+	io_benchmark \
+	dangling_reference
 
 ifeq ($(shell ./check_compiler.sh gnu 70000 $(CXX)),0)
 CXXFLAGS += \
