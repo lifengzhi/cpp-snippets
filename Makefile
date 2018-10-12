@@ -41,7 +41,8 @@ targets :=\
 	unique_ptr02 \
 	fs01 \
 	io_benchmark \
-	dangling_reference
+	dangling_reference \
+	make_shared01
 
 ifeq ($(shell ./check_compiler.sh gnu 70000 $(CXX)),0)
 CXXFLAGS += \
