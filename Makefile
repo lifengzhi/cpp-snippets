@@ -42,7 +42,8 @@ targets :=\
 	fs01 \
 	io_benchmark \
 	dangling_reference \
-	make_shared01
+	make_shared01 \
+	chrono01
 
 ifeq ($(shell ./check_compiler.sh gnu 70000 $(CXX)),0)
 CXXFLAGS += \
