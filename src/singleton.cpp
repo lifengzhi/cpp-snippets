@@ -5,25 +5,24 @@
 
 class CSingleton final {
  public:
-  static CSingleton& GetInstance();
+  static CSingleton& GetInstance() {
+    static CSingleton instance;
+    return instance;
+  }
+
   int getValue() const { return mValue; }
+
+ private:
+  CSingleton() = default;
+  ~CSingleton() = default;
 
   CSingleton(const CSingleton&) = delete;
   CSingleton& operator=(const CSingleton&) = delete;
   CSingleton(CSingleton&&) = delete;
   CSingleton& operator=(CSingleton&&) = delete;
 
- private:
-  CSingleton() = default;
-  ~CSingleton() = default;
-
   int mValue = 0;
 };
-
-CSingleton& CSingleton::GetInstance() {
-  static CSingleton instance;
-  return instance;
-}
 
 int main() {
   auto const value{CSingleton::GetInstance().getValue()};
