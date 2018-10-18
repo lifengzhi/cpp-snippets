@@ -7,13 +7,10 @@ clone_script:
   - sh: git clone -q --recursive --branch=${APPVEYOR_REPO_BRANCH} https://github.com/${APPVEYOR_REPO_NAME}.git ${APPVEYOR_BUILD_FOLDER}
   - sh: git checkout -qf ${APPVEYOR_REPO_COMMIT}
 install:
-  - sh: sudo apt --yes install shellcheck
-  - sh: sudo apt --yes install cppcheck
+  - sh: sudo apt -y -qq install shellcheck
+  - sh: sudo apt -y -qq install cppcheck
   - sh: sudo update-alternatives --set gcc /usr/bin/gcc-8
-for:
--
-  matrix:
-    only:
-      - image: Ubuntu1804
-  build_script:
-  - g++ --version && make clean all
+before_build:
+  - sh: g++ --version
+build_script:
+  - sh: make clean all
