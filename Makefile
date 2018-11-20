@@ -46,7 +46,8 @@ targets :=\
 	chrono01 \
 	args_printf \
 	execve \
-	identity
+	identity \
+	sean_parent_loops
 
 ifeq ($(shell ./check_compiler.sh gnu 70000 $(CXX)),0)
 CXXFLAGS += \
