@@ -23,7 +23,7 @@ inline void array_copy(T (&dst)[N], T (&src)[N]) noexcept {
 
 template <typename T>
 void print_collection(gsl::span<const T> s) {
-  std::copy(std::begin(s), std::end(s),
+  std::copy(std::cbegin(s), std::cend(s),
             std::ostream_iterator<T>(std::cout, "\n"));
 }
 

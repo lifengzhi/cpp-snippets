@@ -25,7 +25,7 @@ auto findDuplicates(std::vector<T>& vecOfElements) {
   // https://stackoverflow.com/a/8234813/496459
   // See also: Effective STL Item 9 Choose carefully among erasing options
 
-  for (auto it = std::begin(countMap); it != std::end(countMap);) {
+  for (auto it = std::cbegin(countMap); it != std::cend(countMap);) {
     if (it->second == 1)
       it = countMap.erase(it);
     else

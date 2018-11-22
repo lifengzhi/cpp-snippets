@@ -12,7 +12,7 @@ template <typename T>
 void write_data_pass_by_const_ref(gsl::span<T> const &s,
                                   std::string const &filename) {
   std::ofstream file(filename);
-  std::copy(std::begin(s), std::end(s), std::ostream_iterator<T>(file, "\n"));
+  std::copy(std::cbegin(s), std::cend(s), std::ostream_iterator<T>(file, "\n"));
 }
 
 // See e.g. https://github.com/Microsoft/GSL/issues/380#issuecomment-250842034
@@ -20,7 +20,7 @@ template <typename T>
 void write_data_pass_by_value(gsl::span<T> const s,
                               std::string const &filename) {
   std::ofstream file(filename);
-  std::copy(std::begin(s), std::end(s), std::ostream_iterator<T>(file, "\n"));
+  std::copy(std::cbegin(s), std::cend(s), std::ostream_iterator<T>(file, "\n"));
 }
 
 // After reading Rainer Grimm's articles:
@@ -30,7 +30,7 @@ void write_data_pass_by_value(gsl::span<T> const s,
 template <typename T>
 void write_data_gsl(gsl::span<const T> s, std::string const &filename) {
   std::ofstream file(filename);
-  std::copy(std::begin(s), std::end(s), std::ostream_iterator<T>(file, "\n"));
+  std::copy(std::cbegin(s), std::cend(s), std::ostream_iterator<T>(file, "\n"));
 }
 
 int main() {

@@ -6,7 +6,7 @@
 
 int main() {
   std::vector<double> v{1.0, 2.0, 3.0};
-  auto const min_value {*std::min_element(std::begin(v), std::end(v))};
+  auto const min_value {*std::min_element(std::cbegin(v), std::cend(v))};
   std::cout << "Minimal value: " << min_value << "\n";
 
   return 0;
