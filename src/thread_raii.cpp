@@ -1,12 +1,11 @@
 #include <iostream>
 
-// Effective Modern C++ by Scott Meyers (O’Reilly).
-// Copyright 2015 Scott Meyers, 978-1-491-90399-5
-// Item 37: Make std::threads unjoinable on all paths.
 #include <thread>
 
 namespace meyers {
-
+// Effective Modern C++ by Scott Meyers (O’Reilly).
+// Copyright 2015 Scott Meyers, 978-1-491-90399-5
+// Item 37: Make std::threads unjoinable on all paths.
 class thread_raii {
  public:
   enum class dtor_action { join, detach };
@@ -69,9 +68,52 @@ class thread_raii {
 
 }  // namespace meyers
 
-int main() {
-  meyers::thread_raii t{std::thread{[]() { std::cout << "Hello world!\n"; }},
-                        meyers::thread_raii::dtor_action::join};
+namespace williams {
+// C++ Concurrency in Action by Anthony Williams
+// Copyright 2012 Manning Publications Co., 978-1-933-98877-1
+// Listing 2.6 scoped_thread and example usage
+class scoped_thread {
+  std::thread t;
 
-  // auto nh{t.get().native_handle()};
+ public:
+  explicit scoped_thread(std::thread t_) : t(std::move(t_)) {
+    if (!t.joinable()) throw std::logic_error("No thread.");
+  }
+  ~scoped_thread() { t.join(); }
+
+  scoped_thread(scoped_thread const&) = delete;
+  scoped_thread& operator=(scoped_thread const&) = delete;
+};
+
+}  // namespace williams
+
+namespace stroustrup {
+// The C++ Programming Language, Fourth Edition by Bjarne Stroustrup
+// Copyright 2013 by Pearson Education, Inc., 978-0-321-56384-2
+// Section 42.2.4 join()
+struct guarded_thread : std::thread {
+  // inherit the thread class' constructor
+  // $20.3.5.1
+  using std::thread::thread;
+  ~guarded_thread() {
+    if (joinable()) {
+      join();
+    }
+  }
+};
+
+}  // namespace stroustrup
+
+int main() {
+  meyers::thread_raii meyers_thread{
+      std::thread{[]() { std::cout << "Hello world (Meyers)!\n"; }},
+      meyers::thread_raii::dtor_action::join};
+
+  // auto nh{meyers_thread.get().native_handle()};
+
+  williams::scoped_thread williams_thread{
+      std::thread([]() { std::cout << "Hello world (Williams)!\n"; })};
+
+  stroustrup::guarded_thread stroustrup_thread{
+      []() { std::cout << "Hello world (Stroustrup)!\n"; }};
 }
