@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include <thread>
+#include <type_traits>
 
 namespace meyers {
 // Effective Modern C++ by Scott Meyers (O’Reilly).
@@ -45,6 +46,9 @@ class thread_raii {
     }
   }
 
+  // Added: Rule of five for better readability
+  thread_raii(thread_raii const&) = delete;
+  thread_raii& operator=(thread_raii const&) = delete;
   // 4 - Item 17 explains that because thread_raii declares a destructor, there
   // will be no compiler-generated move operations, but there is no reason
   // thread_raii objects shouldn’t be movable. If compilers were to generate
@@ -66,6 +70,11 @@ class thread_raii {
   std::thread thread;
 };
 
+static_assert(!std::is_copy_constructible_v<thread_raii>);
+static_assert(!std::is_copy_assignable_v<thread_raii>);
+static_assert(std::is_move_assignable_v<thread_raii>);
+static_assert(std::is_move_constructible_v<thread_raii>);
+
 }  // namespace meyers
 
 namespace williams {
@@ -81,9 +90,18 @@ class scoped_thread {
   }
   ~scoped_thread() { t.join(); }
 
+  // Added: Rule of five for better readability
   scoped_thread(scoped_thread const&) = delete;
   scoped_thread& operator=(scoped_thread const&) = delete;
+  // Added: re-enable move semantics (like meyers::thread_raii)
+  scoped_thread(scoped_thread&&) = default;
+  scoped_thread& operator=(scoped_thread&&) = default;
 };
+
+static_assert(!std::is_copy_constructible_v<scoped_thread>);
+static_assert(!std::is_copy_assignable_v<scoped_thread>);
+static_assert(std::is_move_assignable_v<scoped_thread>);
+static_assert(std::is_move_constructible_v<scoped_thread>);
 
 }  // namespace williams
 
@@ -100,7 +118,19 @@ struct guarded_thread : std::thread {
       join();
     }
   }
+
+  // Added: Rule of five for better readability
+  guarded_thread(guarded_thread const&) = delete;
+  guarded_thread& operator=(guarded_thread const&) = delete;
+  // Added: re-enable move semantics (like meyers::thread_raii)
+  guarded_thread(guarded_thread&&) = default;
+  guarded_thread& operator=(guarded_thread&&) = default;
 };
+
+static_assert(!std::is_copy_constructible_v<guarded_thread>);
+static_assert(!std::is_copy_assignable_v<guarded_thread>);
+static_assert(std::is_move_assignable_v<guarded_thread>);
+static_assert(std::is_move_constructible_v<guarded_thread>);
 
 }  // namespace stroustrup
 
