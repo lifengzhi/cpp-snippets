@@ -49,7 +49,8 @@ targets :=\
 	identity \
 	sean_parent_loops \
 	thread_raii \
-	enumerate
+	enumerate \
+	kadane
 
 ifeq ($(shell ./check_compiler.sh gnu 70000 $(CXX)),0)
 CXXFLAGS += \
