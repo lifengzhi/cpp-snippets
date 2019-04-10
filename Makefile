@@ -50,7 +50,8 @@ targets :=\
 	sean_parent_loops \
 	thread_raii \
 	enumerate \
-	kadane
+	kadane \
+	array_dimensions
 
 ifeq ($(shell ./check_compiler.sh gnu 70000 $(CXX)),0)
 CXXFLAGS += \
