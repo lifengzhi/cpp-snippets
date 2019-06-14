@@ -3,7 +3,7 @@
 #include <climits>
 #include <vector>
 
-int maxSumSubArray(std::vector<int> &A) {
+int maxSumSubArray(std::vector<int> const &A) {
   int n = A.size();
   int local_max = 0;
   int global_max = INT_MIN;

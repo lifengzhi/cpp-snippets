@@ -27,7 +27,7 @@ void draw(const T& x, ostream& out, size_t position) {
 class object_t {
  public:
   template <typename T>
-  object_t(T x) : self_(new model<T>(move(x))) {}
+  explicit object_t(T x) : self_(new model<T>(move(x))) {}
 
   object_t(const object_t& x) : self_(x.self_->copy_()) {}
   object_t(object_t&&) noexcept = default;
@@ -51,7 +51,7 @@ class object_t {
   };
   template <typename T>
   struct model : concept_t {
-    model(T x) : data_(move(x)) {}
+    explicit model(T x) : data_(move(x)) {}
     concept_t* copy_() const { return new model(*this); }
     void draw_(ostream& out, size_t position) const {
       draw(data_, out, position);
