@@ -51,7 +51,8 @@ targets :=\
 	thread_raii \
 	enumerate \
 	kadane \
-	array_dimensions
+	array_dimensions \
+	optional_monad
 
 ifeq ($(shell ./check_compiler.sh gnu 70000 $(CXX)),0)
 CXXFLAGS += \
