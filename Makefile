@@ -52,7 +52,8 @@ targets :=\
 	enumerate \
 	kadane \
 	array_dimensions \
-	optional_monad
+	optional_monad \
+	overload
 
 ifeq ($(shell ./check_compiler.sh gnu 70000 $(CXX)),0)
 CXXFLAGS += \
